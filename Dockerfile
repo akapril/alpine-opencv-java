@@ -12,6 +12,7 @@ ENV ANT_CONTRIB_VERSION 1.0b2
 ARG OPENCV_VERSION=4.2.0
 
 USER root
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk add --update --no-cache \
     # Deps start
@@ -90,12 +91,13 @@ RUN apk add --update --no-cache \
     # Build
     make -j`grep -c '^processor' /proc/cpuinfo` && \
     make install && \
-    mv ./lib /root/lib && \
+    # mv ./lib /root/lib  && \
     # Cleanup
     cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
     rm -rf ${ANT_HOME} && \
     apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
-                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
-                    libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
-                    ffmpeg-dev libavc1394-dev python3-dev && \
-    rm -vrf /var/cache/apk/*
+                   openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
+                   libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
+                   ffmpeg-dev libavc1394-dev python3-dev && \
+    rm -vrf /var/cache/apk/* && \
+     apk update 
