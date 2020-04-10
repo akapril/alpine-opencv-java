@@ -12,8 +12,6 @@ ENV ANT_CONTRIB_VERSION 1.0b2
 ARG OPENCV_VERSION=4.2.0
 
 USER root
-# change mirrors
-# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk add --update --no-cache \
     # Deps start
@@ -66,7 +64,7 @@ RUN apk add --update --no-cache \
         -D CMAKE_BUILD_TYPE=RELEASE \
         -D CMAKE_C_COMPILER=/usr/bin/clang \
         -D CMAKE_CXX_COMPILER=/usr/bin/clang++ \
-        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_INSTALL_PREFIX=/usr/local/opencv \
         # No examples
         -D INSTALL_PYTHON_EXAMPLES=NO \
         -D INSTALL_C_EXAMPLES=NO \
