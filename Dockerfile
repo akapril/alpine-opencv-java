@@ -57,7 +57,8 @@ RUN apk add --update --no-cache \
     tar -xvzf $OPENCV_VERSION.tar.gz && \
     rm -vrf $OPENCV_VERSION.tar.gz && \
     # Configure
-    mkdir -vp /tmp/opencv-$OPENCV_VERSION/build && \
+    mkdir -vp /tmp/opencv-$OPENCV_VERSION/build && \    
+    mkdir -vp /usr/local/opencv && \
     cd /tmp/opencv-$OPENCV_VERSION/build && \
     cmake \
         # Compiler params
@@ -89,9 +90,10 @@ RUN apk add --update --no-cache \
     # Build
     make -j`grep -c '^processor' /proc/cpuinfo` && \
     make install && \
+    mv ./lib /root/lib && \
     # Cleanup
-    cd / && rm -vrf /tmp/opencv-$OPENCV_VERSION && \
-    rm -vrf ${ANT_HOME} && \
+    cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
+    rm -rf ${ANT_HOME} && \
     apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
                     openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
                     libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
