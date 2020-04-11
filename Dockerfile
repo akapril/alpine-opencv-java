@@ -105,4 +105,4 @@ RUN apk update && \
                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
                    libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
                    ffmpeg-dev libavc1394-dev python3-dev && \
-    rm -vrf /var/cache/apk/* 
+    rm -vrf /var/cache/apk/*
