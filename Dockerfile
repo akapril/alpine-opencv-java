@@ -12,7 +12,7 @@ ENV ANT_CONTRIB_VERSION 1.0b2
 ARG OPENCV_VERSION=4.2.0
 
 USER root
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update && \
     apk add --update --no-cache \
@@ -34,8 +34,8 @@ RUN apk update && \
     gst-plugins-base gst-plugins-base-dev \
     # libstdc++ curl ca-certificates bash java-cacerts \
     libgphoto2 libgphoto2-dev && \
-    apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-#    apk add --repository http://mirrors.aliyun.com/alpine/edge/testing \
+#    apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    apk add --repository http://mirrors.aliyun.com/alpine/edge/testing \
             --update --no-cache libtbb libtbb-dev &&  \
     cd /tmp && \
     # Downloads Ant
@@ -56,16 +56,16 @@ RUN apk update && \
     unset ANT_CONTRIB_VERSION && \
     # Deps end
     # Downloads opencv
-    wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz && \
-    #wget https://gitee.com/mirrors/opencv/repository/archive/$OPENCV_VERSION.tar.gz && \
+    #wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz && \
+    wget https://gitee.com/mirrors/opencv/repository/archive/$OPENCV_VERSION.tar.gz && \
     tar -xvzf $OPENCV_VERSION.tar.gz && \
     rm -vrf $OPENCV_VERSION.tar.gz && \
     # Configure
-    mkdir -vp /tmp/opencv-$OPENCV_VERSION/build && \    
-    #mkdir -vp /tmp/opencv/build && \    
+    #mkdir -vp /tmp/opencv-$OPENCV_VERSION/build && \    
+    mkdir -vp /tmp/opencv/build && \    
     mkdir -vp /usr/local/opencv && \
-    cd /tmp/opencv-$OPENCV_VERSION/build && \
-    #cd /tmp/opencv/build && \
+    #cd /tmp/opencv-$OPENCV_VERSION/build && \
+    cd /tmp/opencv/build && \
     cmake \
         # Compiler params
         -D CMAKE_BUILD_TYPE=RELEASE \
@@ -97,8 +97,8 @@ RUN apk update && \
     make -j`grep -c '^processor' /proc/cpuinfo` && \
     make install && \
     # Cleanup
-    cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
-    #cd / && rm -rf /tmp/opencv && \
+    #cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
+    cd / && rm -rf /tmp/opencv && \
     rm -rf ${ANT_HOME} 
 RUN apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
