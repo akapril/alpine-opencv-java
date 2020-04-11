@@ -14,7 +14,8 @@ ARG OPENCV_VERSION=4.2.0
 USER root
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
-RUN apk add --update --no-cache \
+RUN apk update && \
+    apk add --update --no-cache \
     # Deps start
     # Build dependencies
     build-base clang clang-dev cmake pkgconf wget openblas openblas-dev \
@@ -104,4 +105,4 @@ RUN apk add --update --no-cache \
                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
                    libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
                    ffmpeg-dev libavc1394-dev python3-dev && \
-    #rm -vrf /var/cache/apk/* 
+    rm -vrf /var/cache/apk/* 
