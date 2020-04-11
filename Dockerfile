@@ -95,7 +95,7 @@ RUN apk update && \
     # mv ./lib /root/lib  && \
     # Cleanup
     cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
-    rm -rf ${ANT_HOME} && \
+    rm -rf ${ANT_HOME} 
 RUN apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
                    libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
