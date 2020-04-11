@@ -42,7 +42,7 @@ RUN apk update && \
     #wget http://www.us.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     wget http://www.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     mkdir ant-${ANT_VERSION} && \
-    tar -zxvf apache-ant-${ANT_VERSION}-bin.tar.gz  && \
+    tar -zxf apache-ant-${ANT_VERSION}-bin.tar.gz  && \
     mv apache-ant-${ANT_VERSION} ${ANT_HOME} && \
     rm apache-ant-${ANT_VERSION}-bin.tar.gz && \
     rm -rf ant-${ANT_VERSION} && \
@@ -50,7 +50,7 @@ RUN apk update && \
     unset ANT_VERSION && \
     # Downloads Ant-contrib
     wget http://kent.dl.sourceforge.net/project/ant-contrib/ant-contrib/ant-contrib-${ANT_CONTRIB_VERSION}/ant-contrib-${ANT_CONTRIB_VERSION}-bin.tar.gz && \
-    tar -zxvf ant-contrib-${ANT_CONTRIB_VERSION}-bin.tar.gz  && \
+    tar -zxf ant-contrib-${ANT_CONTRIB_VERSION}-bin.tar.gz  && \
     cp ant-contrib/lib/ant-contrib.jar ${ANT_HOME}/lib && \
     rm -rf ant-contrib && \
     rm ant-contrib-${ANT_CONTRIB_VERSION}-bin.tar.gz  && \
@@ -59,8 +59,8 @@ RUN apk update && \
     # Downloads opencv
     #wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz && \
     wget https://gitee.com/mirrors/opencv/repository/archive/$OPENCV_VERSION.tar.gz && \
-    tar -xvzf $OPENCV_VERSION.tar.gz && \
-    rm -vrf $OPENCV_VERSION.tar.gz && \
+    tar -xzf $OPENCV_VERSION.tar.gz && \
+    rm -rf $OPENCV_VERSION.tar.gz && \
     # Configure
     #mkdir -vp /tmp/opencv-$OPENCV_VERSION/build && \    
     mkdir -vp /tmp/opencv/build && \    
