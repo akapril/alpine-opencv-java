@@ -2,11 +2,5 @@ service:
     docker
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t deemocat/alpine-opencv-java:$TRAVIS_TAG .
+  - docker build -t deemocat/alpine-opencv-java:latest .
   - docker push deemocat/alpine-opencv-java:latest
-  - docker push deemocat/alpine-opencv-java:$TRAVIS_TAG
-on:
-  tags: true
-  branch: master
-tag: latest
-condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+-[0-9]$'
