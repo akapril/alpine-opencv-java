@@ -39,7 +39,8 @@ RUN apk update && \
             --update --no-cache libtbb libtbb-dev &&  \
     cd /tmp && \
     # Downloads Ant
-    wget http://www.us.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    #wget http://www.us.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    wget http://www.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
     mkdir ant-${ANT_VERSION} && \
     tar -zxvf apache-ant-${ANT_VERSION}-bin.tar.gz  && \
     mv apache-ant-${ANT_VERSION} ${ANT_HOME} && \
