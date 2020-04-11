@@ -99,9 +99,9 @@ RUN apk update && \
     # Cleanup
     cd / && rm -rf /tmp/opencv-$OPENCV_VERSION && \
     #cd / && rm -rf /tmp/opencv && \
-    rm -rf ${ANT_HOME} 
-RUN apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
+    rm -rf ${ANT_HOME} && \
+    apk del --purge build-base clang clang-dev cmake pkgconf wget openblas-dev \
                    openexr-dev gstreamer-dev gst-plugins-base-dev libgphoto2-dev \
                    libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev \
-                   ffmpeg-dev libavc1394-dev python3-dev 
-RUN rm -vrf /var/cache/apk/* 
+                   ffmpeg-dev libavc1394-dev python3-dev && \
+     rm -vrf /var/cache/apk/*
