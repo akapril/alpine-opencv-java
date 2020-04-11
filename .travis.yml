@@ -1,0 +1,6 @@
+service:
+    docker
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t deemocat/alpine-opencv-java:latest .
+  - docker push deemocat/alpine-opencv-java:latest
