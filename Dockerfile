@@ -35,6 +35,8 @@ RUN apk update && \
     # libstdc++ curl ca-certificates bash java-cacerts \
     libgphoto2 libgphoto2-dev && \
     apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
+    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases \
 #    apk add --repository http://mirrors.aliyun.com/alpine/edge/testing \
             --update --no-cache libtbb libtbb-dev &&  \
     cd /tmp && \
