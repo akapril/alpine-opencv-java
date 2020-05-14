@@ -12,7 +12,7 @@ ENV ANT_CONTRIB_VERSION 1.0b2
 ARG OPENCV_VERSION=4.2.0
 
 USER root
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
 RUN apk update && \
     apk add --update --no-cache -t \
