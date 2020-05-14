@@ -14,10 +14,10 @@ ARG OPENCV_VERSION=4.2.0
 USER root
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
-RUN apk update && \
-    apk add  --no-cache -t --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
-    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main \
-    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases \
+RUN echo "https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community\nhttps://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main\nhttps://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases" >> /etc/apk/repositories
+
+RUN apk upgrade && apk update && \
+    apk add  --no-cache -t  \
     --update  \
     # Deps start
     # Build dependencies
