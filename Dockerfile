@@ -15,10 +15,10 @@ USER root
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
 RUN apk update && \
-    apk add  --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
+    apk add  --no-cache -t --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
     --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main \
     --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases \
-    --update --no-cache -t \
+    --update  \
     # Deps start
     # Build dependencies
     build-base clang clang-dev cmake pkgconf wget openblas openblas-dev \
