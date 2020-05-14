@@ -15,9 +15,9 @@ USER root
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 
 RUN apk update && \
-    apk add  --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
-    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases \
+    apk add  --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
+    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main \
+    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases \
     --update --no-cache -t \
     # Deps start
     # Build dependencies
@@ -37,9 +37,9 @@ RUN apk update && \
     gst-plugins-base gst-plugins-base-dev \
     # libstdc++ curl ca-certificates bash java-cacerts \
     libgphoto2 libgphoto2-dev && \
-    apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main \
-    --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases \
+    apk add --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
+    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main \
+    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases \
             --update --no-cache libtbb libtbb-dev &&  \
     cd /tmp && \
     # Downloads Ant
