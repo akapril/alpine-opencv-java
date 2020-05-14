@@ -1,4 +1,4 @@
-FROM registry.cn-qingdao.aliyuncs.com/jiahua/jdk:8u242-zulu-alpine
+FROM mcr.microsoft.com/java/jdk:8-zulu-alpine
 
 MAINTAINER deemocat <deathswaltz@hotmail.com>
 
