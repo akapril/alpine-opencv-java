@@ -1,4 +1,4 @@
-FROM oracle-serverjre:8
+FROM registry.cn-qingdao.aliyuncs.com/jiahua/jdk:8u242-zulu-alpine
 
 MAINTAINER deemocat <deathswaltz@hotmail.com>
 

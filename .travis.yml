@@ -2,5 +2,5 @@ service:
     docker
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t deemocat/alpine-opencv-java:oracle-8 .
-  - docker push deemocat/alpine-opencv-java:oracle-8
+  - docker build -t deemocat/alpine-opencv-java:jdk-8u242 .
+  - docker push deemocat/alpine-opencv-java:jdk-8u242
