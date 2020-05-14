@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM oracle-serverjre:8
 
 MAINTAINER deemocat <deathswaltz@hotmail.com>
 
