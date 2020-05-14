@@ -12,13 +12,10 @@ ENV ANT_CONTRIB_VERSION 1.0b2
 ARG OPENCV_VERSION=4.2.0
 
 USER root
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
-RUN echo -e "https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community\nhttps://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main" >> /etc/apk/repositories
-
-RUN apk upgrade && apk update && \
-    apk add  --no-cache -t  \
-    --update  \
+RUN apk update && \
+    apk add --update --no-cache \
     # Deps start
     # Build dependencies
     build-base clang clang-dev cmake pkgconf wget openblas openblas-dev \
@@ -37,9 +34,8 @@ RUN apk upgrade && apk update && \
     gst-plugins-base gst-plugins-base-dev \
     # libstdc++ curl ca-certificates bash java-cacerts \
     libgphoto2 libgphoto2-dev && \
-    apk add --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/community \
-    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/main \
-    --repository https://mirrors.tuna.tsinghua.edu.cn/alpine/latest-stable/releases \
+    apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+#    apk add --repository http://mirrors.aliyun.com/alpine/edge/testing \
             --update --no-cache libtbb libtbb-dev &&  \
     cd /tmp && \
     # Downloads Ant
