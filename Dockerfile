@@ -15,7 +15,7 @@ USER root
 #RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update && \
-    apk add --update --no-cache \
+    apk add --repository http://dl-cdn.alpinelinux.org/alpine/v3.10/main --update --no-cache \
     # Deps start
     # Build dependencies
     build-base clang clang-dev cmake pkgconf wget openblas openblas-dev \
