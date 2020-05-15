@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/java/jdk:8u232-zulu-alpine	
+FROM mcr.microsoft.com/java/jdk:8-zulu-alpine	
 
 MAINTAINER deemocat <deathswaltz@hotmail.com>
 
